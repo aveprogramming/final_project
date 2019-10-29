@@ -1,0 +1,17 @@
+{% extends 'news/base.html'%}
+{% block content %}
+    {% for post in posts %}
+{#        <h1> {{ post.headline }}</h1>#}
+{#        <p>From {{ post.date }} </p>#}
+{#        <p> {{ post.content }} </p>#}
+            <article class="media content-section">
+                <div class="media-body">
+                    <div class="article-metadata">
+                        <small class="text-muted">{{ post.date }}</small>
+                    </div>
+                    <h2><a class="article-title" href="#">{{ post.headline }}</a></h2>
+                    <p class="article-content">{{ post.content }}</p>
+                    </div>
+            </article>
+    {% endfor %}
+{% endblock content %}
