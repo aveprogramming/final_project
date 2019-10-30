@@ -19,10 +19,10 @@ def clean_text(text):
 
 
 def y_encoder(labels):
-    lab2idx = {'business': 0, 'politics': 1, 'tech': 2}
+    lab2idx = {'business': 0, 'politics': 1, 'tech': 2, 'showbiz':3}
     y = []
     for labs in labels:
-        y_ = [0, 0, 0]
+        y_ = [0, 0, 0, 0]
         for lab in labs:
             try:
                 y_[lab2idx[lab]] = 1
@@ -33,12 +33,12 @@ def y_encoder(labels):
 
 
 def prediction_to_label(y_pred):
-    lab2idx = {'business': 0, 'politics': 1, 'tech': 2}
-    labels = []
+    lab2idx = {0: 'business', 1: 'politics', 2: 'tech', 3: 'showbiz'}
+    label = []
     for i in range(len(y_pred)):
         if y_pred[i] == 1:
-            labels.append(lab2idx[i])
-    return labels
+            label.append(lab2idx[i])
+    return label
 
 
 MAX_SEQUENCE_LENGTH = 100

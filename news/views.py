@@ -1,10 +1,8 @@
 from django.shortcuts import render
-from django.views.generic import ListView, DetailView
-from .models import Post
+from web_scraping.scrapescrape import receive_news
 
+posts = receive_news()
 
-# '''a list or a dictionary to which I'll send the scraped posts'''
-# posts = [
 #     {
 #         'headline': 'Donald Trump kills his dog',
 #         'content': 'ZZZZZZZ smth happens',
@@ -69,25 +67,25 @@ from .models import Post
 # ]
 
 
-# def home(request):
-#     '''хочу сюда сложить наскрейпленные новости'''
-#     context = {
-# #        posts : Post.objects.all()
-#     }
-#     # context = {'posts':
-#     # posts}
-#     return render(request, 'news/home.html', context)
+def home(request):
+    '''хочу сюда сложить наскрейпленные новости'''
+    context = {
+#        posts : Post.objects.all()
+    }
+    context = {'posts':
+    posts}
+    return render(request, 'news/home.html', context)
 
 
-class PostListView(ListView):
-    model = Post
-    template_name = 'news/home.html'
-    context_object_name = 'posts'
-    ordering = ['-date']
-    paginate_by = 5
-
-
-class PostDetailView(DetailView):
-    model = Post
+# class PostListView(ListView):
+#     model = Post
+#     template_name = 'news/home.html'
+#     context_object_name = 'posts'
+#     ordering = ['-date']
+#     paginate_by = 5
+#
+#
+# class PostDetailView(DetailView):
+#     model = Post
 
 
